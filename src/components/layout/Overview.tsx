@@ -1,101 +1,73 @@
-import macbook from '@/assets/phone-showcase/macbook.png';
 import searchedTeachers from '@/assets/phone-showcase/Searched Teachers.png';
 import teacherSchedule from '@/assets/phone-showcase/Teacher Drawer.png';
 import classicSchedule from '@/assets/phone-showcase/Classic Schedule.png';
 import customization from '@/assets/phone-showcase/Customization.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { EffectCoverflow, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useState } from 'react';
+
 export function Overview() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  console.log(activeIndex)
+  const titles = [
+      'Расписание преподавателя',
+      'Полное расписание',
+      'Кастомизация',
+      'Поиск преподавателей'
+  ]
+  const texts = [
+    "Нужно сдать долги? Легко можно узнать расписание нужного преподавателя!",
+    "Позволяет смотреть ваше расписание в привычном виде! Пары выводятся одним списком по дням с разделением по чётности недели. Будьте внимательны, пары с нестандартными датами помечены оранжевой подсветкой!",
+    "Настраивайте приложение под себя!",
+    "Найдите любого преподавателя и смотрите его расписание!"
+  ];
   return (
-    <div className="container">
+    <div className="w-full flex h-[600px] ">
+      <div className='w-[60%] h-[100%]'>
       <Swiper
-        className="w-full h-[500px] flex justify-center items-center"
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        slidesPerView={1}
-        navigation
+      className='w-[100%] h-[100%]'
+      loop
+      navigation
+      grabCursor
+      effect='coverflow'
+      coverflowEffect={{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      pagination={true} 
+      modules={[EffectCoverflow, Navigation]}
+      slidesPerView={3}
+      onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       >
-        <SwiperSlide className="flex justify-center max-h-full">
-          <div className="w-full h-full flex flex-col justify-center items-center md:flex-row">
-            <div className="w-full h-full relative md:w-[50%]">
-              <img
-                className="absolute top-1/2 -translate-y-1/2 left-0 "
-                src={macbook}
-                alt=""
-              />
-            </div>
-            <div className="space-y-4 md:w-[50%]">
-              <h3 className="text-5xl">Доступность</h3>
-              <p className="text-2xl">
-                Без привязки к платформе. Пользуйтесь на ПК, iOs и Android.
-              </p>
-            </div>
-          </div>
+        <SwiperSlide className='flex justify-center items-center'>
+          <img className='h-[100%]' src={searchedTeachers} alt="" />
         </SwiperSlide>
-        <SwiperSlide className="flex justify-center max-h-full">
-          <div className="w-full flex flex-col justify-center items-center lg:flex-row">
-            <div className="w-full h-[400px] relative md:w-[50%] ">
-              <img
-                className="absolute -top-10 left-0 "
-                src={searchedTeachers}
-                alt=""
-              />
-            </div>
-            <div className="space-y-4 md:w-[50%]">
-              <h3 className="text-5xl">Поиск преподавателей</h3>
-              <p className="text-2xl">
-                Найдите преподавателя по своему запросу.
-              </p>
-            </div>
-          </div>
+        <SwiperSlide className='flex justify-center items-center'>
+          <img className='h-[100%]' src={teacherSchedule} alt="" />
         </SwiperSlide>
-        <SwiperSlide className="flex justify-center max-h-full">
-          <div className="w-full flex flex-col justify-center items-center md:flex-row">
-            <div className="space-y-4 md:w-[50%]">
-              <h3 className="text-5xl">Расписание преподавателей</h3>
-              <p className="text-2xl">
-                Берегите своё время. Быстрый и удобный просмотр расписания
-                преподавателей.
-              </p>
-            </div>
-            <div className="w-full h-[400px] relative md:w-[50%] ">
-              <img
-                className="absolute -top-72 left-0"
-                src={teacherSchedule}
-                alt=""
-              />
-            </div>
-          </div>
+        <SwiperSlide className='flex justify-center items-center'>
+          <img className='h-[100%]' src={classicSchedule} alt="" />
         </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <div>
-            <div>
-              <img src={classicSchedule} alt="" />
-            </div>
-            <div>
-              <h3>Полное расписание</h3>
-              <p>
-                Для ценителей классики. Просмотр расписания на неделю без
-                привязки к дате.
-              </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="flex justify-center">
-          <div>
-            <div>
-              <img src={customization} alt="" />
-            </div>
-            <div>
-              <h3>Кастомизация</h3>
-              <p>Управляй своим расписанием.</p>
-            </div>
-          </div>
+        <SwiperSlide className='flex justify-center items-center'>
+          <img className='h-[100%]' src={customization} alt="" />
         </SwiperSlide>
       </Swiper>
+
+      </div>
+      <div className='w-[50%] flex flex-col gap-[100px]'>
+        <h1 className='text-5xl font-bold'>О приложении</h1>
+        <div>
+          <h2 className='text-2xl font-bold'>{titles[activeIndex]}</h2>
+          <h2 className='text-xl font-medium'>{texts[activeIndex]}</h2>
+        </div>
+      </div>
     </div>
   );
 }
