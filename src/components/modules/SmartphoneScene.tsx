@@ -22,6 +22,7 @@ function SmartphoneModel() {
 export default function SmartphoneScene() {
   return (
     <Canvas
+      className="hidden lg:block"
       style={{
         width: '850px',
         height: '850px',

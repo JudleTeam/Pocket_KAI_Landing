@@ -1,5 +1,6 @@
-import { Button } from '../ui/button';
 import pKLogo from '@/assets/images/white-logo.png';
+import { Button } from '../ui/button';
+import { FaTelegramPlane } from 'react-icons/fa';
 export function Header() {
   return (
     <header className="w-full flex justify-between items-center py-2 container">
@@ -11,11 +12,9 @@ export function Header() {
         <Button variant={'outline'}>Варианты</Button>
         <Button variant={'outline'}>Отзывы</Button>
         <Button variant={'outline'}>О нас</Button> */}
-        <Button
-          variant={'outline'}
-          className="transition-all hover:text-white bg-[length:300%_100%] hover:bg-[100%_0] duration-300 bg-gradient-to-r from-[#8454C8] via-[#C850C0] to-[#FFCC70]"
-        >
-          Скачать
+        <Button variant={'outline'} className="space-x-2">
+          <FaTelegramPlane />
+          <span>Telegram</span>
         </Button>
       </div>
     </header>
