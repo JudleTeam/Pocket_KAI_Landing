@@ -1,6 +1,6 @@
 export function AboutUs() {
   return (
-    <div className=" py-3 flex flex-col items-center text-center text-white bg-gradient-to-b from-[#000000] to-[#272525]">
+    <div className=" py-10 flex flex-col items-center text-center text-white bg-gradient-to-b from-[#000000] to-[#272525]">
       <h3 className="text-4xl text-white">
         Мы -{' '}
         <span className="bg-clip-text bg-gradient-to-r from-[#8454C8] via-[#C850C0] to-[#FFCC70] text-transparent">

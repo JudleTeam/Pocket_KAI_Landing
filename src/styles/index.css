@@ -14,3 +14,43 @@ body {
 #root {
   min-height: 100vh;
 }
+
+.custom-swiper-wrapper {
+  position: relative;
+}
+.custom-swiper-wrapper::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25px;
+  margin: 0;
+  border-right: 100px solid #fff;
+  filter: blur(10px);
+  z-index: 2;
+}
+
+.custom-swiper-wrapper::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -30px;
+
+  margin: 0;
+  border-right: 100px solid #fff;
+  filter: blur(10px);
+  z-index: 2;
+}
+
+@media (max-width: 48em) {
+  .custom-swiper-wrapper::before {
+    border-right: 50px solid #fff;
+  }
+
+  .custom-swiper-wrapper::after {
+    border-right: 50px solid #fff;
+  }
+}
