@@ -16,8 +16,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function Overview() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const swiperRef = useRef<SwiperType | null>(null);
+  const [screenWidth, setScreenWidth] = useState(window.screen.width);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.screen.width);
@@ -43,7 +43,7 @@ export function Overview() {
   ];
   const titleWords = titles[activeIndex].split(' ');
   return (
-    <div className="container w-full flex flex-col items-center h-fit max-h-fit py-3 gap-7 lg:max-h-[800px] lg:flex-row lg:gap-10">
+    <div className="container w-full flex flex-col items-center h-fit max-h-fit py-8 gap-7 lg:max-h-[800px] lg:flex-row lg:gap-10">
       <div className="w-full lg:w-[50%] custom-swiper-wrapper">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -125,7 +125,7 @@ export function Overview() {
         {screenWidth > 992 && (
           <h3 className="text-5xl font-bold text-[#272525]">О приложении</h3>
         )}
-        <div className="space-x-4">
+        <div className="space-x-4 mx-auto lg:mx-0">
           <Button onClick={() => swiperRef.current?.slidePrev()}>
             <ChevronLeft />
           </Button>
@@ -133,17 +133,17 @@ export function Overview() {
             <ChevronRight />
           </Button>
         </div>
-        <div>
-          <h2 className="text-4xl font-semibold">
+        <div className="flex flex-col gap-3 items-center lg:items-start">
+          <h2 className="text-4xl font-semibold text-center md:text-left">
             <span className="bg-clip-text bg-gradient-to-r from-[#f6d365] to-[#fda085] text-transparent">
               {titleWords[0]}
             </span>{' '}
             {titleWords.length > 1 && titleWords[1]}
           </h2>
 
-          <h2 className="text-2xl font-medium text-[#272525]">
+          <p className="text-2xl font-medium text-[#272525] text-center lg:text-left">
             {texts[activeIndex]}
-          </h2>
+          </p>
         </div>
       </div>
     </div>

@@ -12,10 +12,12 @@ export function Header() {
         <Button variant={'outline'}>Варианты</Button>
         <Button variant={'outline'}>Отзывы</Button>
         <Button variant={'outline'}>О нас</Button> */}
-        <Button variant={'outline'} className="space-x-2">
-          <FaTelegramPlane />
-          <span>Telegram</span>
-        </Button>
+        <a href="https://t.me/pocket_kai" target="_blank">
+          <Button variant={'outline'} className="space-x-2 z-10">
+            <FaTelegramPlane />
+            <span>Telegram</span>
+          </Button>
+        </a>
       </div>
     </header>
   );
