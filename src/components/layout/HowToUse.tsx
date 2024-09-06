@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/select';
 import { HOW_TO_USE } from '@/constants/HOW_TO_USE';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 //from-[#8454C8] via-[#C850C0] to-[#FFCC70]
 export function HowToUse() {
   const [tutorialType, setTutorialType] = useState<string>('');
@@ -14,9 +15,15 @@ export function HowToUse() {
   return (
     <div className="min-h-[600px] h-fit flex flex-col pt-5 pb-10 gap-5 bg-gradient-to-b from-[#000000] to-[#272525]">
       <div className="container">
-        <h2 className="text-4xl md:text-5xl text-white font-bold text-center md:text-right">
+        <motion.h2
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0 }}
+          className="text-4xl md:text-5xl text-white font-bold text-center md:text-right"
+        >
           Как установить?
-        </h2>
+        </motion.h2>
         <div className="flex justify-center items-end gap-2 mb-5">
           <p className="text-white text-xl font-medium">Я пользуюсь...</p>
           <Select value={tutorialType} onValueChange={setTutorialType}>
@@ -41,7 +48,13 @@ export function HowToUse() {
                 key={step.title}
                 className="flex gap-10 w-full md:justify-center"
               >
-                <div className="w-[20%] md:w-[5%] flex flex-col items-center">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: index * 0.1 }}
+                  className="w-[20%] md:w-[5%] flex flex-col items-center"
+                >
                   <div
                     data-last={index === steps.length - 1}
                     className={
@@ -60,8 +73,12 @@ export function HowToUse() {
                       }
                     />
                   )}
-                </div>
-                <div
+                </motion.div>
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: index * 0.1 }}
                   className={
                     'w-[70%] md:w-[30%] text-white flex flex-col gap-2 pb-10' +
                     ''
@@ -76,7 +93,7 @@ export function HowToUse() {
                   <p className=" text-white text-sm sm:text-lg">
                     {step.description}
                   </p>
-                </div>
+                </motion.div>
               </div>
             ))}
           {!tutorialType && (

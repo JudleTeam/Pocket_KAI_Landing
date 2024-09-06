@@ -11,6 +11,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+
 import { Button } from '../ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -123,27 +125,53 @@ export function Overview() {
       </div>
       <div className="w-full self-start lg:w-1/2 flex flex-col gap-3">
         {screenWidth > 992 && (
-          <h3 className="text-5xl font-bold text-[#272525]">О приложении</h3>
+          <motion.h3
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0 }}
+            className="text-5xl font-bold text-[#272525]"
+          >
+            О приложении
+          </motion.h3>
         )}
-        <div className="space-x-4 mx-auto lg:mx-0">
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0 }}
+          className="space-x-4 mx-auto lg:mx-0"
+        >
           <Button onClick={() => swiperRef.current?.slidePrev()}>
             <ChevronLeft />
           </Button>
           <Button onClick={() => swiperRef.current?.slideNext()}>
             <ChevronRight />
           </Button>
-        </div>
+        </motion.div>
         <div className="flex flex-col gap-3 items-center lg:items-start">
-          <h2 className="text-4xl font-semibold text-center md:text-left">
+          <motion.h2
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0 }}
+            className="text-4xl font-semibold text-center md:text-left"
+          >
             <span className="bg-clip-text bg-gradient-to-r from-[#f6d365] to-[#fda085] text-transparent">
               {titleWords[0]}
             </span>{' '}
             {titleWords.length > 1 && titleWords[1]}
-          </h2>
+          </motion.h2>
 
-          <p className="text-2xl font-medium text-[#272525] text-center lg:text-left">
+          <motion.p
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0 }}
+            className="text-2xl font-medium text-[#272525] text-center lg:text-left"
+          >
             {texts[activeIndex]}
-          </p>
+          </motion.p>
         </div>
       </div>
     </div>
