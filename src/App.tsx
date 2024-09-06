@@ -5,7 +5,6 @@ import { HowToUse } from './components/layout/HowToUse';
 import { Links } from './components/layout/Links';
 import { Main } from './components/layout/Main';
 import { Overview } from './components/layout/Overview';
-
 function App() {
   return (
     <div className="flex flex-col">
