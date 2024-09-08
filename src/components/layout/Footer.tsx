@@ -38,6 +38,7 @@ export function Footer() {
           <img src={pilot} alt="" />
         </div> */}
       </div>
+
       <div className="absolute right-0 bottom-1 w-[250px]">
         <motion.img
           initial={{ y: 200, x: 200 }}
